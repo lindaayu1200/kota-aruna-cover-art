@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Kota Aruna — Cover Art Studio</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="src/main.js"></script>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <header class="brand">
+        <div class="brand-mark">KA</div>
+        <div>
+          <h1>KOTA ARUNA</h1>
+          <p>Cover Art Studio <span class="dot">/</span> neon harbour edition</p>
+        </div>
+      </header>
+
+      <div class="controls">
+        <section class="group">
+          <h2>01 <span>Format</span></h2>
+          <div class="segmented" role="group" aria-label="Poster size">
+            <button type="button" data-size="square">1080 × 1080</button>
+            <button type="button" data-size="portrait">1080 × 1350</button>
+            <button type="button" data-size="landscape">1920 × 1080</button>
+          </div>
+          <div class="seed-row">
+            <label for="seedInput">Seed</label>
+            <input id="seedInput" type="number" step="1" inputmode="numeric">
+            <button type="button" id="newSeed" class="ghost">New seed</button>
+          </div>
+        </section>
+
+        <section class="group">
+          <h2>02 <span>Words</span></h2>
+          <label class="field" for="titleInput">Title</label>
+          <input id="titleInput" type="text" maxlength="32" spellcheck="false">
+          <label class="field" for="subtitleInput">Subtitle</label>
+          <input id="subtitleInput" type="text" maxlength="48" spellcheck="false">
+          <label class="field" for="taglineInput">Tagline</label>
+          <input id="taglineInput" type="text" maxlength="80" spellcheck="false">
+        </section>
+
+        <section class="group">
+          <h2>03 <span>Crew</span></h2>
+          <label class="field" for="crew0">Panel 1 · lead</label>
+          <input id="crew0" type="text" maxlength="28" spellcheck="false">
+          <label class="field" for="crew1">Panel 2</label>
+          <input id="crew1" type="text" maxlength="28" spellcheck="false">
+          <label class="field" for="crew2">Panel 3</label>
+          <input id="crew2" type="text" maxlength="28" spellcheck="false">
+          <label class="field" for="crew3">Panel 4</label>
+          <input id="crew3" type="text" maxlength="28" spellcheck="false">
+          <label class="field" for="crew4">Panel 5</label>
+          <input id="crew4" type="text" maxlength="28" spellcheck="false">
+        </section>
+
+        <section class="group">
+          <h2>04 <span>Characters</span></h2>
+          <label class="toggle" for="useOne">
+            <input id="useOne" type="checkbox">
+            <span class="switch" aria-hidden="true"></span>
+            <span>Use one photo in every panel</span>
+          </label>
+
+          <div class="slot" id="slot0">
+            <div class="slot-top"><strong>Slot 1</strong><em id="photoState0">PROCEDURAL</em></div>
+            <label class="file-btn">Choose image<input id="photo0" type="file" accept="image/*"></label>
+            <div class="zoom-row"><span>Zoom</span><input id="zoom0" type="range" min="1" max="3" step="0.01" value="1"><output id="zoomOut0">1.00×</output></div>
+          </div>
+          <div class="slot" id="slot1">
+            <div class="slot-top"><strong>Slot 2</strong><em id="photoState1">PROCEDURAL</em></div>
+            <label class="file-btn">Choose image<input id="photo1" type="file" accept="image/*"></label>
+            <div class="zoom-row"><span>Zoom</span><input id="zoom1" type="range" min="1" max="3" step="0.01" value="1"><output id="zoomOut1">1.00×</output></div>
+          </div>
+          <div class="slot" id="slot2">
+            <div class="slot-top"><strong>Slot 3</strong><em id="photoState2">PROCEDURAL</em></div>
+            <label class="file-btn">Choose image<input id="photo2" type="file" accept="image/*"></label>
+            <div class="zoom-row"><span>Zoom</span><input id="zoom2" type="range" min="1" max="3" step="0.01" value="1"><output id="zoomOut2">1.00×</output></div>
+          </div>
+          <div class="slot" id="slot3">
+            <div class="slot-top"><strong>Slot 4</strong><em id="photoState3">PROCEDURAL</em></div>
+            <label class="file-btn">Choose image<input id="photo3" type="file" accept="image/*"></label>
+            <div class="zoom-row"><span>Zoom</span><input id="zoom3" type="range" min="1" max="3" step="0.01" value="1"><output id="zoomOut3">1.00×</output></div>
+          </div>
+          <div class="slot" id="slot4">
+            <div class="slot-top"><strong>Slot 5</strong><em id="photoState4">PROCEDURAL</em></div>
+            <label class="file-btn">Choose image<input id="photo4" type="file" accept="image/*"></label>
+            <div class="zoom-row"><span>Zoom</span><input id="zoom4" type="range" min="1" max="3" step="0.01" value="1"><output id="zoomOut4">1.00×</output></div>
+          </div>
+          <p class="hint">Drag a character panel in the preview to reframe its photo. Empty panels are drawn from the seed.</p>
+        </section>
+      </div>
+
+      <footer class="sidebar-foot">
+        <button type="button" id="exportBtn">Export PNG</button>
+        <p id="status" role="status" aria-live="polite">Ready.</p>
+      </footer>
+    </aside>
+
+    <main class="preview">
+      <div class="preview-bar">
+        <span class="preview-title">Live preview</span>
+        <span class="preview-note">local files only · nothing leaves this machine</span>
+      </div>
+      <div class="stage">
+        <canvas id="cover" aria-label="Kota Aruna cover preview"></canvas>
+      </div>
+      <div class="preview-foot">KOTA ARUNA <span>—</span> A CITY UNDER GLASS <span>—</span> 2026</div>
+    </main>
+  </div>
+</body>
+</html>
